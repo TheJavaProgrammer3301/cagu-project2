@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap');
+
+.burger-item {
+	width: 100%;
+	height: 50vh;
+	display: flex;
+}
+
+.burger-item:nth-child(even) {
+	background-color: #FFCE1B;
+}
+
+.burger-icon {
+	width: 50%;
+	object-fit: cover;
+	display: block;
+	flex-shrink: 0;
+}
+
+.burger-info {
+	padding: 32px;
+	display: flex;
+	max-height: 100%;
+	max-width: 100%;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
+.burger-info p {
+	font-size: 24px;
+	margin: 0;
+	margin-top: 16px;
+	font-family: "cooper-black-std", serif;
+}
+
+.burger-info .filler {
+	flex-grow: 1;
+}
+
+.burger-info span {
+	font-family: "Bree Serif", serif;
+	font-size: 32px;
+}
+
+h1 {
+	margin: 0;
+	font-family: "cooper-black-std", serif;
+}
+
+.burger-info h1 {
+	font-weight: 200;
+	font-size: 36px;
+}
+
+.hero {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.carousel {
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: visible;
+	display: grid;
+	grid-template-columns: repeat(100, 1fr);
+}
+
+.carousel img {
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: relative;
+	object-fit: cover;
+}
+
+.hero h1 {
+	font-size: calc(min(15vh, 15vw));
+	text-align: center;
+	z-index: 1;
+	color: white;
+	text-shadow: black 1px 0 20px;
+	margin: 32px;
+}
+
+.fields {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+}
+
+.section-header {
+	width: 100vw;
+	height: 128px;
+	display: flex;
+	background-color: #FFCE1B;
+	align-items: center;
+	justify-content: center;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.section-header h1 {
+	font-size: 48px;
+}
+
+* {
+	overflow-x: hidden;
+}
+
+@media screen and (max-width: 100vh) {
+	.burger-icon {
+		width: 100vw;
+		max-height: 35%;
+		aspect-ratio: 1;
+	}
+
+	.burger-item {
+		height: 100vh;
+		align-items: start;
+		flex-direction: column;
+	}
+
+	.burger-info {
+		height: 100%;
+		width: 100vw;
+	}
+}
+
+@media screen and (min-width: 100vh) {
+	.burger-icon {
+		height: 100%;
+		max-width: 50vh;
+	}
+
+	.burger-item {
+		flex-direction: row;
+	}
+
+	.burger-info {
+		width: 100%;
+	}
+
+	.burger-item.offset .burger-icon {
+		order: 1;
+	}
+}
+
+.contact {
+	width: 100vw;
+	height: 100vh;
+	padding: 32px;
+	box-sizing: border-box;
+	background-color: rgb(30, 30, 30);
+}
+
+.contact h1 {
+	font-size: calc(min(10vh, 10vw));
+	color: white;
+	text-align: center;
+}
+
+.contact p {
+	font-size: 20px;
+	margin: 0;
+	margin-top: 16px;
+	font-family: "Bree Serif", serif;
+	font-weight: lighter;
+	color: white;
+}
