@@ -1,9 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import about from './assets/about.mov';
+import bacon from './assets/bacon.jpg';
+import buffalo from './assets/buffalo.webp';
 import burger from './assets/burger.jpg';
+import classic from './assets/classic.avif';
+import french from './assets/french.jpg';
 import hashbrowns from './assets/hashbrowns.jpg';
+import salad from './assets/salad.jpg';
 import sandwich from './assets/sandwich.avif';
+import waffles from './assets/waffles.webp';
 
 const currencyFormat = new Intl.NumberFormat("en-us", { style: "currency", currency: "USD" });
 
@@ -68,7 +74,7 @@ function doAnimation(element: HTMLDivElement, start: number, goal: number) {
 }
 
 function Carousel() {
-	const images = useMemo(() => [burger, burger, burger, burger], []);
+	const images = useMemo(() => [burger, classic, bacon, sandwich], []);
 	const [state, setState] = useState(0);
 	const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -99,7 +105,7 @@ function AboutPage() {
 				<source src={about} />
 			</video>
 			<h1>
-				John's burgers is really cool.
+				Welcome to John's Burgers.
 			</h1>
 			<p>
 				John Burger (inventor of the burger) always wanted to make people happy with his food. Thanks to the hard work of our staff, we're able to fulfill his legacy.
@@ -126,6 +132,7 @@ function SectionHeader({ text }: { text: string }) {
 
 type Course = {
 	title: string;
+	offset: boolean;
 	items: {
 		name: string;
 		description: string;
@@ -138,27 +145,82 @@ type Course = {
 const courses = [
 	{
 		title: "BREAKFAST",
+		offset: false,
 		items: [
 			{
-				name: "burger1",
-				description: "burger",
-				icon: burger,
-				price: 123213,
-				calories: 1238123
+				name: "Deluxe Pancakes",
+				description: "There are rumors that John discovered his famous pancake formula when he got stuck in the Alps for a month. Rumor or not, his deluxe pancakes are all you need to live a good life.",
+				icon: waffles,
+				price: 12.99,
+				calories: 400
 			},
 			{
-				name: "burger2",
-				description: "burger",
+				name: "Hashbrowns and Eggs",
+				description: "John's hashbrowns have been considered the very best by 90% of Americans in the years 1850-1920. Don't believe us? Prove us wrong by trying them yourself.",
 				icon: hashbrowns,
-				price: 123213,
-				calories: 1238123
+				price: 8.99,
+				calories: 600
 			},
 			{
-				name: "burger3",
-				description: "burger",
+				name: "Classic Breakfast Sandwich",
+				description: "Before John finalized his invention of the burger, he prototyped a sandwich which was perfect for eating in the morning. Bruce Lee used to have one everyday.*",
 				icon: sandwich,
-				price: 123213,
-				calories: 1238123
+				price: 14.99,
+				calories: 1150
+			}
+		]
+	},
+	{
+		title: "GREENS & SIDES",
+		offset: true,
+		items: [
+			{
+				name: "Malaysian Salad",
+				description: "When John got stuck in Malaysia for a week due to passport problems, he spent that time creating the best salad ever experienced by mankind.",
+				icon: salad,
+				price: 13.99,
+				calories: 700
+			},
+			{
+				name: "Buffalo Wings",
+				description: "John invented the Buffalo Wing when he discovered winged buffalos in North Dakota during the early 1900s, just a couple years before they went extinct. Experience it yourself, today.",
+				icon: buffalo,
+				price: 11.99,
+				calories: 850
+			},
+			{
+				name: "Deluxe Fries",
+				description: "While we can't say that his fries are made out of real French people, we can guarantee the taste to be like that of French cuisine.",
+				icon: french,
+				price: 7.99,
+				calories: 250
+			}
+		]
+	},
+	{
+		title: "BURGERS",
+		offset: false,
+		items: [
+			{
+				name: "Bacon Burger",
+				description: "John's Bacon Burger has both a layer of bacon and a bacon filled patty. What more can you ask for?",
+				icon: bacon,
+				price: 19.99,
+				calories: 1200
+			},
+			{
+				name: "Italian Burger",
+				description: "John derived the Italian burger during his time in Italy in the early 1900s. He considered combining pizza and burgers, but decided on this instead.",
+				icon: burger,
+				price: 15.99,
+				calories: 1300
+			},
+			{
+				name: "Classic Burger",
+				description: "Simple yet savory, John's original burger is once again on the menu. Using the same style that pleased thousands long ago, experience the burger that made John Burger.",
+				icon: classic,
+				price: 21.99,
+				calories: 950
 			}
 		]
 	}
@@ -167,7 +229,7 @@ const courses = [
 function Course({ course }: { course: Course }) {
 	return <>
 		<SectionHeader text={course.title} />
-		{course.items.map((item, i) => <BurgerItem offset={i % 2 == 1} offsetThird={i % 3 == 2} {...item} key={i} />)}
+		{course.items.map((item, i) => <BurgerItem offset={course.offset ? i % 2 == 0 : i % 2 == 1} offsetThird={i % 3 == 2} {...item} key={i} />)}
 	</>
 }
 

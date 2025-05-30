@@ -6,7 +6,7 @@
 	display: flex;
 }
 
-.burger-item:nth-of-type(odd) {
+.burger-item:nth-of-type(even) {
 	background-color: #FFCE1B;
 }
 
@@ -226,6 +226,10 @@ a:hover {
 
 	.burger-info {
 		width: 100%;
+	}
+
+	.burger-info p {
+		font-size: 30px;
 	}
 
 	.burger-item.offset .burger-icon {
