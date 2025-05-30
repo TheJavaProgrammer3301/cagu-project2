@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
+import about from './assets/about.mov';
 import burger from './assets/burger.jpg';
 import hashbrowns from './assets/hashbrowns.jpg';
 import sandwich from './assets/sandwich.avif';
@@ -90,10 +91,30 @@ function Carousel() {
 	</div>
 }
 
+function AboutPage() {
+	return <>
+		<SectionHeader text='ABOUT US' />
+		<div className='about'>
+			<video autoPlay muted loop>
+				<source src={about} />
+			</video>
+			<h1>
+				John's burgers is really cool.
+			</h1>
+			<p>
+				John Burger (inventor of the burger) always wanted to make people happy with his food. Thanks to the hard work of our staff, we're able to fulfill his legacy.
+				<br />
+				<br />
+				In case you're unsure about whether John's Burgers is worth going to, explore our menu below.
+			</p>
+		</div>
+	</>;
+}
+
 function RestaurantHero() {
 	return <div className='hero'>
 		<Carousel />
-		<h1>JOHN'S BURGER MENU</h1>
+		<h1>JOHN'S BURGERS</h1>
 	</div>;
 }
 
@@ -153,7 +174,10 @@ function Course({ course }: { course: Course }) {
 function ContactPage() {
 	return <div className='contact'>
 		<h1>NOT SATISFIED?</h1>
-		<p>Feel free to contact us if there's anything you think we should add or if there are any problems with our menu.</p>
+		<p>Feel free to contact us below if there's anything you think we should add or if there are any problems with our menu.</p>
+		<a href="tel:+11234567890"><span>+1 (123) 456-7890</span></a>
+		<a href="mailto:john.burger@gmail.com"><span>john.burger@gmail.com</span></a>
+		<a href="https://www.google.com/maps/place/47+W+13th+St+New+York+NY+10011+USA"><span>47 W 13th St, New York, NY 10011, USA</span></a>
 	</div>;
 }
 
@@ -161,6 +185,7 @@ function App() {
 	return (
 		<>
 			<RestaurantHero />
+			<AboutPage />
 			{courses.map(course => <Course course={course} />)}
 			<ContactPage />
 		</>
