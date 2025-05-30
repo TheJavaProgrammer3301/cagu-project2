@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
-import about from './assets/about.mov';
+import about from './assets/about.mp4';
 import bacon from './assets/bacon.jpg';
 import buffalo from './assets/buffalo.webp';
 import burger from './assets/burger.jpg';
