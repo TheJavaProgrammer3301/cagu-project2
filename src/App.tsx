@@ -103,6 +103,17 @@ function SectionHeader({ text }: { text: string }) {
 	</div>;
 }
 
+type Course = {
+	title: string;
+	items: {
+		name: string;
+		description: string;
+		icon: string;
+		price: number;
+		calories: number;
+	}[];
+};
+
 const courses = [
 	{
 		title: "BREAKFAST",
@@ -132,7 +143,7 @@ const courses = [
 	}
 ]
 
-function Course({ course }) {
+function Course({ course }: { course: Course }) {
 	return <>
 		<SectionHeader text={course.title} />
 		{course.items.map((item, i) => <BurgerItem offset={i % 2 == 1} offsetThird={i % 3 == 2} {...item} key={i} />)}
